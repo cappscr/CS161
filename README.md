@@ -68,27 +68,27 @@ Library:
 - getPatron - returns a pointer to the Patron corresponding to the ID parameter, or NULL if no such Patron is a member
 
 - checkOutBook:
-    if the specified Book is not in the Library, return "book not found"
-    if the specified Patron is not in the Library, return "patron not found"
-    if the specified Book is already checked out, return "book already checked out"
-    if the specified Book is on hold by another Patron, return "book on hold by other patron"
-    otherwise update the Book's checkedOutBy, dateCheckedOut and Location; if the Book was on hold for this Patron, update requestedBy; update the Patron's checkedOutBooks; return "check out successful"
+  - if the specified Book is not in the Library, return "book not found"
+  - if the specified Patron is not in the Library, return "patron not found"
+  - if the specified Book is already checked out, return "book already checked out"
+  - if the specified Book is on hold by another Patron, return "book on hold by other patron"
+  - otherwise update the Book's checkedOutBy, dateCheckedOut and Location; if the Book was on hold for this Patron, update requestedBy; update the Patron's checkedOutBooks; return "check out successful"
 
 - returnBook:
-    if the specified Book is not in the Library, return "book not found"
-    if the Book is not checked out, return "book already in library" update the Patron's checkedOutBooks; update the Book's location depending on whether another Patron has requested it; update the Book's checkedOutBy; return "return successful"
+  - if the specified Book is not in the Library, return "book not found"
+  - if the Book is not checked out, return "book already in library" update the Patron's checkedOutBooks; update the Book's location depending on whether another Patron has requested it; update the Book's checkedOutBy; return "return successful"
 
 - requestBook:
-    if the specified Book is not in the Library, return "book not found"
-    if the specified Patron is not in the Library, return "patron not found"
-    if the specified Book is already requested, return "book already on hold"
-    update the Book's requestedBy; if the Book is on the shelf, update its location to on hold; return "request successful"
+  - if the specified Book is not in the Library, return "book not found"
+  - if the specified Patron is not in the Library, return "patron not found"
+  - if the specified Book is already requested, return "book already on hold"
+  - update the Book's requestedBy; if the Book is on the shelf, update its location to on hold; return "request successful"
 
 - payFine - takes as a parameter the amount that is being paid (not the negative of that amount)
-    if the specified Patron is not in the Library, return "patron not found"
-    use amendFine to update the Patron's fine; return "payment successful"
+  - if the specified Patron is not in the Library, return "patron not found"
+  - use amendFine to update the Patron's fine; return "payment successful"
 
 - incrementCurrentDate - increment current date; increase each Patron's fines by 10 cents for each overdue Book they have checked out (using amendFine)
-    If a book is checked out on day 0, then on day 1, the patron has had it for 1 day. On day 21, the patron has had it for 21 days, so it is still not overdue. On day 22, the book is overdue and fines will be charged.
+  - If a book is checked out on day 0, then on day 1, the patron has had it for 1 day. On day 21, the patron has had it for 21 days, so it is still not overdue. On day 22, the book is overdue and fines will be charged.
 
 be careful - a Book can be on request without its location being the hold shelf (if another Patron has it checked out);
